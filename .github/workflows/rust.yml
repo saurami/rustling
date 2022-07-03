@@ -80,11 +80,11 @@ jobs:
       with:
         name: test-and-app
 
-    - name: Display structure of downloaded files
+    - name: Show files and make binaries executable
       run: |
         ls -la
-        chmod +x hello_test
-        chmod +x hello
+        chmod +x ./hello_test
+        chmod +x ./hello
 
     - name: Execute test binary
       run: ./hello_test
