@@ -21,8 +21,11 @@ jobs:
     - name: Format scripts
       run: rustfmt *.rs
 
-    - name: Compile binary
-      run: rustc hello.rs
+    - name: Compile binaries
+      run: rustc *.rs
+
+    - name: Execute tests
+      run: rustc --test *.rs --verbose
 
     - name: Execute Binary
       run: ./hello
