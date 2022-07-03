@@ -1,4 +1,6 @@
-# Rust
+[![Rustling CI](https://github.com/saurami/rustling/actions/workflows/rust.yml/badge.svg)](https://github.com/saurami/rustling/actions/workflows/rust.yml)
+
+# Rustling
 
 Covers general purpose programming with Rust.
 
