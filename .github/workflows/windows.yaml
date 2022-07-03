@@ -35,7 +35,7 @@ jobs:
       run: rustfmt hello.rs
 
     - name: Create test binary
-      run: rustc --test hello.rs --verbose -o hello_test
+      run: rustc --test hello.rs --verbose -o hello_test.exe
 
     - name: Create application binary
       run: rustc hello.rs
