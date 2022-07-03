@@ -1,0 +1,77 @@
+name: Rustling CI Windows
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  RUST_BACKTRACE: 1
+  
+
+jobs:
+
+  info:
+    runs-on: [windows-latest]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Compiler version
+      run: rustc --version
+
+
+  build:
+    runs-on: [windows-latest]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Format script
+      run: rustfmt hello.rs
+
+    - name: Create test binary
+      run: rustc --test hello.rs --verbose -o hello_test
+
+    - name: Create application binary
+      run: rustc hello.rs
+
+    - name: Move test and application binaries to artifacts directory
+      run: |
+        mkdir binaries
+        mv .\hello_test.exe .\binaries\
+        mv .\hello.exe .\binaries\
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-and-app
+        path: .\binaries\
+        retention-days: 2
+
+
+  test:
+    needs: [build]
+    runs-on: [windows-latest]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Download artifacts to current directory
+      uses: actions/download-artifact@v3
+      with:
+        name: test-and-app
+
+    - name: Show files in directory
+      run: dir
+
+    - name: Execute test binary
+      run: hello_test.exe
+
+    - name: Run application
+      run: hello.exe
