@@ -1,4 +1,4 @@
-name: Rustling CI
+name: Rustling CI macOS
 
 on:
   push:

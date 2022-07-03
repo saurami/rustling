@@ -1,4 +1,4 @@
-name: Rustling CI
+name: Rustling CI Ubuntu
 
 on:
   push:
