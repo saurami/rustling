@@ -25,7 +25,7 @@ jobs:
       run: rustc *.rs
 
     - name: Create test binaries
-      run: rustc --test *.rs --verbose
+      run: rustc --test hello.rs --verbose -o hello_test
 
     - name: Execute test binary
-      run: ./hello
+      run: ./hello_test
