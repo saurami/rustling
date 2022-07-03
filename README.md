@@ -11,23 +11,40 @@ Setup (on Windows 11 using Chocolatey)
 
 + **Install Visual C++ build tools**
 
-  Rust requires the Microsoft C++ build tools for Visual Studio 2013 or later.
+  Rust requires the Microsoft C++ [build tools][3] for Visual Studio 2013 or later. Ensure that the following optional packages are also installed:
 
-  `choco install visualstudio2019buildtools`
+  1. MSVC
+  2. Windows SDK
+  3. C++ CMake tools for Windows
+  4. Testing tools core features
+  5. C++ AddressSanitizer
 
 + **Install Rust**
 
-  `rustup` is the recommended way to [install][3] Rust
+  [rustup][4] is the recommended way to install Rust
 
 + Verify compiler and package manager
 
-  Run the below command to ensure that the rust compiler `rustc` and package manager `cargo` have been installed.
+  Run the below commands in Command Prompt to ensure that the rust compiler `rustc` and package manager `cargo` have been installed.
   
   ```
   rustc --version
   cargo --version
   ```
 
++ **Execute Script**
+
+  ```
+  rustc hello.rs
+  hello.exe
+  ```
+
++ **Miscellaneous**
+
+  1. Install a text editor
+  2. Install rust-analyzer
+
 [1]: https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/
 [2]: https://www.oreilly.com/library/view/beginning-rust-from/9781484234686/
-[3]: https://www.rust-lang.org/tools/install
+[3]: https://visualstudio.microsoft.com/visual-cpp-build-tools/
+[4]: https://www.rust-lang.org/tools/install
