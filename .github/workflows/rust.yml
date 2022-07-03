@@ -18,14 +18,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Format scripts
-      run: rustfmt *.rs
+    - name: Format script
+      run: rustfmt hello.rs
 
-    - name: Compile binaries
-      run: rustc *.rs
-
-    - name: Create test binaries
+    - name: Create test binary
       run: rustc --test hello.rs --verbose -o hello_test
 
     - name: Execute test binary
       run: ./hello_test
+
+    - name: Create application binaries
+      run: rustc hello.rs
+
+    - name: Run application
+      run: ./hello
