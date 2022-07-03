@@ -1,4 +1,4 @@
-name: Rusting CI
+name: Rustling CI
 
 on:
   push:
