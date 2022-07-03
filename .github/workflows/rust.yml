@@ -47,8 +47,8 @@ jobs:
     - name: Move test and application binaries to artifacts directory
       run: |
         mkdir -p binaries
-        mv ./hello_test ./binaries/
-        mv ./hello ./binaries/
+        mv ./hello_test_${{ matrix.os }} ./binaries/
+        mv ./hello_${{ matrix.os }} ./binaries/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
@@ -74,10 +74,10 @@ jobs:
     - name: Show files and make binaries executable
       run: |
         ls -la
-        chmod +x ./hello_test ./hello
+        chmod +x ./hello_test_${{ matrix.os }} ./hello_${{ matrix.os }}
 
     - name: Execute test binary
-      run: ./hello_test
+      run: ./hello_test_${{ matrix.os }}
 
     - name: Run application
-      run: ./hello
+      run: ./hello_${{ matrix.os }}
