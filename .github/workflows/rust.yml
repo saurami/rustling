@@ -7,9 +7,8 @@ on:
     branches: [ "main" ]
 
 env:
-  RUST_TEST_NOCAPTURE: 1
+  RUST_BACKTRACE: 1
   
-
 jobs:
   build:
 
@@ -25,8 +24,8 @@ jobs:
     - name: Compile binaries
       run: rustc *.rs
 
-    - name: Execute tests
+    - name: Create test binaries
       run: rustc --test *.rs --verbose
 
-    - name: Execute Binary
+    - name: Execute test binary
       run: ./hello
