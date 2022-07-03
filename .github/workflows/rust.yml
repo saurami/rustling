@@ -39,10 +39,10 @@ jobs:
       run: rustfmt hello.rs
 
     - name: Create test binary
-      run: rustc --test hello.rs --verbose -o hello_test
+      run: rustc --test hello.rs --verbose -o hello_test_${{ matrix.os }}
 
     - name: Create application binary
-      run: rustc hello.rs
+      run: rustc hello.rs -o hello_${{ matrix.os }}
 
     - name: Move test and application binaries to artifacts directory
       run: |
