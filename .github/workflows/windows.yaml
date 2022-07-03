@@ -72,7 +72,7 @@ jobs:
       run: dir
 
     - name: Execute test binary
-      run: hello_test.exe
+      run: .\hello_test.exe
 
     - name: Run application
-      run: hello.exe
+      run: .\hello.exe
