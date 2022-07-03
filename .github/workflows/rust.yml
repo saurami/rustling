@@ -55,6 +55,7 @@ jobs:
       with:
         name: test-and-app
         path: ./binaries/
+        retention-days: 2
 
 
   test:
@@ -72,8 +73,7 @@ jobs:
     - name: Show files and make binaries executable
       run: |
         ls -la
-        chmod +x ./hello_test
-        chmod +x ./hello
+        chmod +x ./hello_test ./hello
 
     - name: Execute test binary
       run: ./hello_test
