@@ -39,16 +39,16 @@ jobs:
       run: rustfmt hello.rs
 
     - name: Create test binary
-      run: rustc --test hello.rs --verbose -o hello_test_${{ matrix.os }}
+      run: rustc --test hello.rs --verbose -o hello_test-${{ matrix.os }}
 
     - name: Create application binary
-      run: rustc hello.rs -o hello_${{ matrix.os }}
+      run: rustc hello.rs -o hello-${{ matrix.os }}
 
     - name: Move test and application binaries to artifacts directory
       run: |
         mkdir -p binaries
-        mv ./hello_test_${{ matrix.os }} ./binaries/
-        mv ./hello_${{ matrix.os }} ./binaries/
+        mv ./hello_test-${{ matrix.os }} ./binaries/
+        mv ./hello-${{ matrix.os }} ./binaries/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
@@ -74,10 +74,10 @@ jobs:
     - name: Show files and make binaries executable
       run: |
         ls -la
-        chmod +x ./hello_test_${{ matrix.os }} ./hello_${{ matrix.os }}
+        chmod +x ./hello_test-${{ matrix.os }} ./hello-${{ matrix.os }}
 
     - name: Execute test binary
-      run: ./hello_test_${{ matrix.os }}
+      run: ./hello_test-${{ matrix.os }}
 
     - name: Run application
-      run: ./hello_${{ matrix.os }}
+      run: ./hello-${{ matrix.os }}
