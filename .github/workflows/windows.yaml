@@ -42,7 +42,7 @@ jobs:
 
     - name: Move test and application binaries to artifacts directory
       run: |
-        mkdir binaries
+        mkdir .\binaries\
         mv .\hello_test.exe .\binaries\
         mv .\hello.exe .\binaries\
 
