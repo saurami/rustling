@@ -1,4 +1,4 @@
-name: Rustling CI Windows
+name: Windows CI
 
 on:
   push:
