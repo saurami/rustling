@@ -41,12 +41,9 @@ Setup (on Windows 11 using Chocolatey)
 
 + **Miscellaneous**
 
-  1. Install a text editor
-  2. Install `rust-analyzer`
+  1. Install `rust-analyzer`
+  2. [Code coverage][5]
 
-+ TODO
-
-  1. [Code coverage][5]
 
 [1]: https://docs.microsoft.com/en-us/learn/paths/rust-first-steps/
 [2]: https://www.oreilly.com/library/view/beginning-rust-from/9781484234686/
