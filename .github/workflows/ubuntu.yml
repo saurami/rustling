@@ -66,13 +66,7 @@ jobs:
           ./hello
         key: ${{ github.sha }}
 
-    - name: Show files and make binaries executable
+    - name: Execute test and application binaries
       run: |
-        ls -la
-        chmod +x ./hello_test ./hello
-
-    - name: Execute test binary
-      run: ./hello_test
-
-    - name: Run application
-      run: ./hello
+        ./hello_test
+        ./hello
