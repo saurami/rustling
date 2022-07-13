@@ -15,10 +15,10 @@ fn elapsed_time_in_minutes(number_of_layers: i8, actual_minutes_in_oven: i8) -> 
 }
 
 fn main() {
-    println!(expected_minutes_in_oven());
-    println!(remaining_minutes_in_oven(30));
-    println!(preparation_time_in_minutes(2));
-    println!(elapsed_time_in_minutes(3, 20));
+    println!("{}", expected_minutes_in_oven());
+    println!("{}", remaining_minutes_in_oven(30));
+    println!("{}", preparation_time_in_minutes(2));
+    println!("{}", elapsed_time_in_minutes(3, 20));
 }
 
 
