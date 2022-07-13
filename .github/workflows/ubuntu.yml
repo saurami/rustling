@@ -35,10 +35,14 @@ jobs:
       run: rustfmt hello.rs
 
     - name: Create test binary
-      run: rustc --test hello.rs --verbose -o hello_test
+      run: |
+        rustc --test hello.rs --verbose -o hello_test
+        rustc --test lasagna.rs --verbose -o lasagna_test
 
     - name: Create application binary
-      run: rustc hello.rs
+      run: |
+        rustc hello.rs
+        rustc lasagna.rs
 
     - name: Create test and application cache 
       uses: actions/cache@v3
@@ -47,6 +51,8 @@ jobs:
         path: |
           ./hello_test
           ./hello 
+          ./lasagna_test
+          ./lasagna
         key: ${{ github.sha }}
 
   test:
@@ -64,9 +70,13 @@ jobs:
         path: |
           ./hello_test
           ./hello
+          ./lasagna_test
+          ./lasagna
         key: ${{ github.sha }}
 
     - name: Execute test and application binaries
       run: |
         ./hello_test
         ./hello
+        ./lasagna_test
+        ./lasagna
