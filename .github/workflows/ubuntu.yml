@@ -38,11 +38,13 @@ jobs:
       run: |
         rustc --test hello.rs --verbose -o hello_test
         rustc --test lasagna.rs --verbose -o lasagna_test
+        rustc --test assembly_line.rs --verbose -o assembly_line_test
 
     - name: Create application binary
       run: |
         rustc hello.rs
         rustc lasagna.rs
+        rustc assembly_line.rs
 
     - name: Create test and application cache 
       uses: actions/cache@v3
@@ -53,6 +55,8 @@ jobs:
           ./hello 
           ./lasagna_test
           ./lasagna
+          ./assembly_line_test
+          ./assembly_line
         key: ${{ github.sha }}
 
   test:
@@ -72,6 +76,8 @@ jobs:
           ./hello
           ./lasagna_test
           ./lasagna
+          ./assembly_line_test
+          ./assembly_line
         key: ${{ github.sha }}
 
     - name: Execute test and application binaries
@@ -80,3 +86,5 @@ jobs:
         ./hello
         ./lasagna_test
         ./lasagna
+        ./assembly_line_test
+        ./assembly_line
