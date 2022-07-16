@@ -28,17 +28,12 @@ fn main() {
 }
 
 
-// #[test]
-// fn test_info_message() {
-// 	let message = LogLevel::Info;
-// }
+#[test]
+fn test_info_message() {
+	assert_eq!(info_message(), "[INFO] Timezone changed")
+}
 
-// #[test]
-// fn test_warning() {
-
-// }
-
-// #[test]
-// fn test_error() {
-
-// }
+#[test]
+fn test_error() {
+	assert_eq!(error_message(), "[ERROR] Stack Overflow")
+}
