@@ -1,49 +1,67 @@
 enum LogLevel {
 	Info,
+	Warning,
 	Error
 }
 
-fn emit_log(message_type: LogLevel) -> String {
+fn emit_log(message_type: LogLevel, content: &str) -> String {
 	match message_type {
 		LogLevel::Info => {
-			"[INFO] ".to_owned() + &info_message()
+			info(content)
+		},
+		LogLevel::Warning => {
+			warning(content)
 		},
 		LogLevel::Error => {
-			"[ERROR] ".to_owned() + &error_message()
+			error(content)
 		}
 	}
 }
 
-fn info_message() -> String {
-	String::from("Timezone changed")
+fn info(message: &str) -> String {
+	String::from("[INFO]: ".to_owned() + message)
 }
 
-fn error_message() -> String {
-	String::from("Stack Overflow")
+fn warning(message: &str) -> String {
+	String::from("[WARNING]: ".to_owned() + message)
+}
+
+fn error(message: &str) -> String {
+	String::from("[ERROR]: ".to_owned() + message)
 }
 
 fn main() {
-	emit_log(LogLevel::Info);
-	emit_log(LogLevel::Error);
+	emit_log(LogLevel::Info, "Timezone changed");
+	emit_log(LogLevel::Error, "Stack Overflow");
 }
 
 
 #[test]
-fn test_info_message() {
-	assert_eq!(info_message(), "Timezone changed")
+fn test_emit_info_log() {
+	assert_eq!(emit_log(LogLevel::Info, "Timezone changed"), "[INFO]: Timezone changed")
+}
+
+#[test]
+fn test_emit_warning_log() {
+	assert_eq!(emit_log(LogLevel::Warning, "Timezone not set"), "[WARNING]: Timezone not set")
+}
+
+#[test]
+fn test_emit_error_log() {
+	assert_eq!(emit_log(LogLevel::Error, "Stack Overflow"), "[ERROR]: Stack Overflow")
+}
+
+#[test]
+fn test_info() {
+	assert!(info("Timezone changed") == "[INFO]: Timezone changed")
+}
+
+#[test]
+fn test_warning() {
+	assert!(warning("Timezone not set") == "[WARNING]: Timezone not set")
 }
 
 #[test]
 fn test_error() {
-	assert_eq!(error_message(), "Stack Overflow")
-}
-
-#[test]
-fn test_emit_log_with_info() {
-	assert_eq!(emit_log(LogLevel::Info), "[INFO] Timezone changed")
-}
-
-#[test]
-fn test_emit_log_with_error() {
-	assert_eq!(emit_log(LogLevel::Error), "[ERROR] Stack Overflow")
+	assert!(error("Stack Overflow") == "[ERROR]: Stack Overflow")
 }
