@@ -13,15 +13,15 @@ fn emit_log(message_type: LogLevel, content: &str) -> String {
 }
 
 fn info(message: &str) -> String {
-	String::from("[INFO]: ".to_owned() + message)
+	return format!("[INFO]: {}", message)
 }
 
 fn warning(message: &str) -> String {
-	String::from("[WARNING]: ".to_owned() + message)
+	return format!("[WARNING]: {}", message)
 }
 
 fn error(message: &str) -> String {
-	String::from("[ERROR]: ".to_owned() + message)
+	return format!("[ERROR]: {}", message)
 }
 
 fn main() {
