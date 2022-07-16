@@ -37,6 +37,11 @@ fn test_production_per_minute_at_higher_speed() {
 }
 
 #[test]
+fn test_production_per_minute_at_highest_speed() {
+	assert_eq!(working_items_per_minute(10), 28)
+}
+
+#[test]
 fn test_highest_production_unattainable() {
 	assert_eq!(production_rate_per_hour(11), 0.0)
 }
