@@ -6,15 +6,9 @@ enum LogLevel {
 
 fn emit_log(message_type: LogLevel, content: &str) -> String {
 	match message_type {
-		LogLevel::Info => {
-			info(content)
-		},
-		LogLevel::Warning => {
-			warning(content)
-		},
-		LogLevel::Error => {
-			error(content)
-		}
+		LogLevel::Info => info(content),
+		LogLevel::Warning => warning(content),
+		LogLevel::Error => error(content)
 	}
 }
 
