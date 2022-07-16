@@ -80,11 +80,14 @@ jobs:
           ./assembly_line
         key: ${{ github.sha }}
 
-    - name: Execute test and application binaries
+    - name: Execute test binaries
       run: |
         ./hello_test
-        ./hello
         ./lasagna_test
-        ./lasagna
         ./assembly_line_test
+
+    - name: Execute application binaries
+      run: |
+        ./hello
+        ./lasagna
         ./assembly_line
