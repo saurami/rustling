@@ -39,12 +39,14 @@ jobs:
         rustc --test hello.rs --verbose -o hello_test
         rustc --test lasagna.rs --verbose -o lasagna_test
         rustc --test assembly_line.rs --verbose -o assembly_line_test
+        rustc --test log_levels.rs --verbose -o log_levels_test
 
     - name: Create application binary
       run: |
         rustc hello.rs
         rustc lasagna.rs
         rustc assembly_line.rs
+        rustc log_levels.rs
 
     - name: Create test and application cache 
       uses: actions/cache@v3
@@ -57,6 +59,8 @@ jobs:
           ./lasagna
           ./assembly_line_test
           ./assembly_line
+          ./log_levels_test
+          ./log_levels
         key: ${{ github.sha }}
 
   test:
@@ -78,6 +82,8 @@ jobs:
           ./lasagna
           ./assembly_line_test
           ./assembly_line
+          ./log_levels_test
+          ./log_levels
         key: ${{ github.sha }}
 
     - name: Execute test binaries
@@ -85,9 +91,11 @@ jobs:
         ./hello_test
         ./lasagna_test
         ./assembly_line_test
+        ./log_levels_test
 
     - name: Execute application binaries
       run: |
         ./hello
         ./lasagna
         ./assembly_line
+        ./log_levels
