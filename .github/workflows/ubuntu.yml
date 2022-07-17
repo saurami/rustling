@@ -40,6 +40,7 @@ jobs:
         rustc --test lasagna.rs --verbose -o lasagna_test
         rustc --test assembly_line.rs --verbose -o assembly_line_test
         rustc --test log_messages.rs --verbose -o log_messages_test
+        rustc --test health_stats.rs --verbose -o health_stats_test
 
     - name: Create application binary
       run: |
@@ -47,6 +48,7 @@ jobs:
         rustc lasagna.rs
         rustc assembly_line.rs
         rustc log_messages.rs
+        rustc health_stats.rs
 
     - name: Create test and application cache 
       uses: actions/cache@v3
@@ -61,6 +63,8 @@ jobs:
           ./assembly_line
           ./log_messages_test
           ./log_messages
+          ./health_stats_test
+          ./health_stats
         key: ${{ github.sha }}
 
   test:
@@ -84,6 +88,8 @@ jobs:
           ./assembly_line
           ./log_messages_test
           ./log_messages
+          ./health_stats_test
+          ./health_stats
         key: ${{ github.sha }}
 
     - name: Execute test binaries
@@ -92,6 +98,7 @@ jobs:
         ./lasagna_test
         ./assembly_line_test
         ./log_messages_test
+        ./health_stats_test
 
     - name: Execute application binaries
       run: |
@@ -99,3 +106,4 @@ jobs:
         ./lasagna
         ./assembly_line
         ./log_messages
+        ./health_stats
