@@ -1,6 +1,6 @@
 // creates a sequence containing the first six numbers in Fibonacci series
 fn short_fibonacci() -> Vec<u8> {
-	let mut sequence: Vec<u8> = Vec::new();
+	let mut sequence: Vec<u8> = vec![];
 	for num in 0..6 {
 		if num < 2 {
 			sequence.push(num)
