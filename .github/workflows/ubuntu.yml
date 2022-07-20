@@ -41,6 +41,7 @@ jobs:
         rustc --test assembly_line.rs --verbose -o assembly_line_test
         rustc --test log_messages.rs --verbose -o log_messages_test
         rustc --test health_stats.rs --verbose -o health_stats_test
+        rustc --test short_fibonacci.rs --verbose -o short_fibonacci_test
 
     - name: Create application binary
       run: |
@@ -49,6 +50,7 @@ jobs:
         rustc assembly_line.rs
         rustc log_messages.rs
         rustc health_stats.rs
+        rustc short_fibonacci.rs
 
     - name: Create test and application cache 
       uses: actions/cache@v3
@@ -65,6 +67,8 @@ jobs:
           ./log_messages
           ./health_stats_test
           ./health_stats
+          ./short_fibonacci_test
+          ./short_fibonacci
         key: ${{ github.sha }}
 
   test:
@@ -90,6 +94,8 @@ jobs:
           ./log_messages
           ./health_stats_test
           ./health_stats
+          ./short_fibonacci_test
+          ./short_fibonacci
         key: ${{ github.sha }}
 
     - name: Execute test binaries
@@ -99,6 +105,7 @@ jobs:
         ./assembly_line_test
         ./log_messages_test
         ./health_stats_test
+        ./short_fibonacci_test
 
     - name: Execute application binaries
       run: |
@@ -107,3 +114,4 @@ jobs:
         ./assembly_line
         ./log_messages
         ./health_stats
+        ./short_fibonacci
