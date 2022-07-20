@@ -13,8 +13,18 @@ fn short_fibonacci() -> Vec<u8> {
 }
 
 fn main() {
-	println!("{:?}", short_fibonacci());
     for (pos, e) in short_fibonacci().iter().enumerate() {
         println!("Element at index {} is {}", pos, e);
     }
+}
+
+
+#[test]
+fn test_sequence_length() {
+	assert_eq!(short_fibonacci().len(), 6)
+}
+
+#[test]
+fn test_fifth_number_in_sequence() {
+	assert_eq!(short_fibonacci()[4], 3)
 }
